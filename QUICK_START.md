@@ -5,6 +5,14 @@
 Create token: https://github.com/settings/tokens/new
 - Scopes: `repo`, `workflow`, `admin:public_key`
 
+**PowerShell:**
+```powershell
+$token = "YOUR_TOKEN"
+$token | gh auth login --with-token
+gh auth status
+```
+
+**Bash:**
 ```bash
 echo YOUR_TOKEN | gh auth login --with-token
 gh auth status
@@ -12,6 +20,12 @@ gh auth status
 
 ## 2. Create GitHub Repository
 
+**PowerShell:**
+```powershell
+.\setup-github.ps1
+```
+
+**Bash:**
 ```bash
 bash setup-github.sh
 ```
@@ -22,6 +36,13 @@ This creates the repo and pushes all code.
 
 ### Local Development
 
+**PowerShell:**
+```powershell
+Copy-Item .env.example .env
+notepad .env
+```
+
+**Bash:**
 ```bash
 cp .env.example .env
 # Edit .env with your API keys
@@ -29,6 +50,12 @@ cp .env.example .env
 
 ### GitHub Actions (CI/CD)
 
+**PowerShell:**
+```powershell
+.\setup-secrets.ps1
+```
+
+**Bash:**
 ```bash
 bash setup-secrets.sh
 ```
