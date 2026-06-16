@@ -1,0 +1,7 @@
+﻿"Agent","HTTP","HtmlBytes","HtmlVsBrowserPct","VisibleTextChars","TextVsBrowserPct","ProductSchema","Sha256Prefix"
+"Browser","200","824693","100","3681","100","True","41D8CC513F2E"
+"Google","200","416960","50.6","8650","235","True","426D16E0043C"
+"Bing","200","416960","50.6","8650","235","True","426D16E0043C"
+"OpenAI","200","416960","50.6","8650","235","True","426D16E0043C"
+"Claude","200","821828","99.7","3681","100","True","A1B99FA4E4C1"
+"Perplexity","200","416960","50.6","8650","235","True","426D16E0043C"

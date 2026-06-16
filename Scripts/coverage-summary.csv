@@ -1,0 +1,7 @@
+﻿"Agent","BrowserChecksAvailable","ChecksMatched","CoveragePct"
+"Browser","14","14","100"
+"Google","14","10","71.4"
+"Bing","14","10","71.4"
+"OpenAI","14","10","71.4"
+"Claude","14","14","100"
+"Perplexity","14","10","71.4"
