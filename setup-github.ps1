@@ -15,7 +15,7 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host ""
     Write-Host "Repository created: https://github.com/$username/ecommerce-geo-auditor" -ForegroundColor Green
     Write-Host ""
-    Write-Host "✓ Repository setup complete!" -ForegroundColor Green
+    Write-Host "Repository setup complete!" -ForegroundColor Green
     Write-Host ""
     Write-Host "Next steps:"
     Write-Host "1. Add GitHub Actions secrets:"
@@ -24,5 +24,6 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "2. Copy .env.example to .env and add your API keys"
     Write-Host ""
 } else {
+    Write-Host ""
     Write-Host "Error creating repository" -ForegroundColor Red
 }

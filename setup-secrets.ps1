@@ -37,7 +37,7 @@ if ($addSerpApi -eq 'y') {
 }
 
 Write-Host ""
-Write-Host "✓ Secrets configured!" -ForegroundColor Green
+Write-Host "Secrets configured!" -ForegroundColor Green
 Write-Host ""
 Write-Host "View secrets: gh secret list"
 Write-Host ""
