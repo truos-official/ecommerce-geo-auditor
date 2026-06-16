@@ -18,7 +18,7 @@ $token | gh auth login --with-token
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""
-    Write-Host "✓ Authentication successful!" -ForegroundColor Green
+    Write-Host "Authentication successful!" -ForegroundColor Green
     Write-Host ""
     gh auth status
     Write-Host ""
