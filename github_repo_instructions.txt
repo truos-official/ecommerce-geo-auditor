@@ -1,0 +1,31 @@
+CREATE GITHUB REPO MANUALLY:
+
+1. Go to: https://github.com/new
+
+2. Repository name: ecommerce-geo-auditor
+
+3. Description: Python CLI tool for auditing eCommerce product pages for Generative Engine Optimization (GEO)
+
+4. Public/Private: Choose based on preference
+
+5. DO NOT initialize with README, .gitignore, or license (already have them)
+
+6. Click "Create repository"
+
+7. After creation, run these commands:
+
+   git remote add origin https://github.com/YOUR_USERNAME/ecommerce-geo-auditor.git
+   git branch -M main
+   git push -u origin main
+
+REQUIRED SECRETS FOR CI/CD:
+
+Navigate to: Settings > Secrets and variables > Actions
+
+Add these secrets:
+- OPENAI_API_KEY
+- ANTHROPIC_API_KEY
+- GOOGLE_API_KEY
+- PERPLEXITY_API_KEY (optional)
+- AZURE_OPENAI_API_KEY (optional)
+- PYPI_TOKEN (for releases)

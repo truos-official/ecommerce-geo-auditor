@@ -1,0 +1,148 @@
+# eCommerce GEO Auditor Configuration
+
+# Testing scope
+testing_scope: flagship_only  # "flagship_only" or "multi_model"
+
+# AI Agents Configuration
+agents:
+  openai:
+    enabled: true
+    test_training_mode: true
+    models:
+      - name: gpt-4o
+        tier: flagship
+      - name: o3-mini
+        tier: reasoning
+      - name: gpt-4-turbo
+        tier: standard
+
+  anthropic:
+    enabled: true
+    test_training_mode: true
+    models:
+      - name: claude-sonnet-4
+        tier: flagship
+      - name: claude-opus-4
+        tier: premium
+      - name: claude-haiku-4
+        tier: fast
+
+  google:
+    enabled: true
+    test_training_mode: true
+    models:
+      - name: gemini-2.0-flash-exp
+        tier: flagship
+      - name: gemini-1.5-pro
+        tier: standard
+
+  perplexity:
+    enabled: true
+    test_training_mode: false  # Always live
+    models:
+      - name: sonar-pro
+        tier: flagship
+      - name: sonar
+        tier: standard
+
+  bing:
+    enabled: true
+    test_training_mode: true
+    bing_grounding: true
+    models:
+      - name: gpt-4o
+        tier: flagship
+
+# Prompt Configuration
+prompts:
+  pass_threshold: 70
+  dimensions:
+    - specificity
+    - entity_understanding
+    - workflow_understanding
+    - evidence_trust
+    - comparison_selection
+    - commercial_bridge
+
+# Content Extraction
+content_extraction:
+  block_types:
+    - product_id
+    - product_name
+    - product_description
+    - specifications
+    - applications
+    - storage_conditions
+    - packaging
+    - pricing
+    - availability
+    - safety_information
+    - certificates
+    - related_products
+    - reviews
+    - technical_documents
+    - images
+    - videos
+
+  weights:
+    product_id: 0.20
+    product_name: 0.15
+    description: 0.15
+    specifications: 0.15
+    storage_conditions: 0.10
+    applications: 0.10
+    pricing: 0.10
+    availability: 0.05
+
+# Crawler Configuration
+crawlers:
+  user_agents:
+    browser: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+    googlebot: Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+    bingbot: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm) Chrome/148.0.0.0 Safari/537.36
+    oai-searchbot: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36; compatible; OAI-SearchBot/1.3; +https://openai.com/searchbot
+    claude-searchbot: Claude-SearchBot/1.0 (+https://www.anthropic.com)
+    perplexitybot: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)
+
+  timeout: 30
+  max_retries: 3
+
+# Sibling Discovery
+sibling_discovery:
+  enabled: true
+  max_siblings: 3
+  search_depth: 10
+
+# Competitor Monitoring
+competitor_monitoring:
+  enabled: true
+  auto_discover_competitors: true
+  known_generic_sources:
+    - wikipedia.org
+    - protocols.io
+    - nih.gov
+    - pubmed.gov
+    - ncbi.nlm.nih.gov
+    - sciencedirect.com
+    - nature.com
+    - springer.com
+
+# Output Configuration
+output:
+  directory: output
+  formats:
+    - json
+    - html
+    - pdf
+  generate_failures_report: true
+  generate_retrieval_analysis: true
+  generate_content_value: true
+  generate_competitors: true
+
+# Rate Limiting
+rate_limits:
+  openai_rpm: 60
+  anthropic_rpm: 50
+  google_rpm: 60
+  perplexity_rpm: 20
+  bing_rpm: 10
