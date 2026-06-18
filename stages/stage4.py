@@ -18,6 +18,15 @@ async def run_stage4(context: AuditContext, config: dict) -> AuditContext:
             context.content_blocks,
             context.product_category
         )
+    else:
+        # Fallback: minimal reference facts from content blocks
+        context.reference_facts = {
+            "core": {
+                "product_id": None,
+                "product_name": "Unknown Product",
+                "canonical_url": context.url
+            }
+        }
 
     # Build unbranded prompts
     context.prompts = build_unbranded_prompts(

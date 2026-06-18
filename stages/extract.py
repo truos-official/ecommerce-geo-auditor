@@ -39,7 +39,7 @@ def parse_product_schema(schema: dict) -> ProductSchema:
 
     return ProductSchema(
         raw=schema,
-        product_id=schema.get("sku"),
+        product_id=schema.get("sku") or schema.get("productID"),
         name=schema.get("name"),
         description=schema.get("description"),
         price=offer.get("price"),

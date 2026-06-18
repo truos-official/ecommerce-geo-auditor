@@ -9,7 +9,7 @@ from core.context import AuditContext
 async def fetch_with_user_agent(url: str, user_agent: str, timeout: int = 30) -> dict[str, Any]:
     """Fetch URL with specific user agent."""
     try:
-        async with httpx.AsyncClient(timeout=timeout) as client:
+        async with httpx.AsyncClient(timeout=timeout, verify=False) as client:
             response = await client.get(
                 url,
                 headers={"User-Agent": user_agent},
@@ -51,6 +51,15 @@ async def run_stage1(context: AuditContext, config: dict) -> AuditContext:
     for agent_name, user_agent in user_agents.items():
         result = await fetch_with_user_agent(url, user_agent, timeout)
         context.http_responses[agent_name] = result
+
+        # Debug logging
+        if result.get("error"):
+            print(f"    {agent_name}: ERROR - {result['error']}")
+        elif not result.get("html"):
+            print(f"    {agent_name}: No HTML (status {result.get('status_code')})")
+        else:
+            html_len = len(result.get("html", ""))
+            print(f"    {agent_name}: OK ({html_len} bytes)")
 
     # Validate locale
     context.locale_valid = validate_locale(url)

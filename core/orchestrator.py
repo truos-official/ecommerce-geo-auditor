@@ -24,6 +24,11 @@ async def run_audit(url: str, config: dict, output_dir: str) -> AuditContext:
     print("  Stage 1: Fetching...")
     context = await run_stage1(context, config)
 
+    # Debug: check fetch success
+    browser_response = context.http_responses.get("browser", {})
+    if not browser_response.get("html"):
+        print("  ! Warning: No HTML fetched from browser user agent")
+
     # Stage 2: Render
     print("  Stage 2: Rendering...")
     try:
@@ -34,6 +39,12 @@ async def run_audit(url: str, config: dict, output_dir: str) -> AuditContext:
     # Stage 3: Extract & Classify
     print("  Stage 3: Extracting...")
     context = run_stage3(context, config)
+
+    # Debug: check extraction success
+    if not context.product_schema:
+        print("  ! Warning: No product schema found")
+    if not context.content_blocks:
+        print("  ! Warning: No content blocks extracted")
 
     # Stage 4: AI Agent Prompting
     print("  Stage 4: Testing agents...")
@@ -79,7 +90,7 @@ async def run_audit(url: str, config: dict, output_dir: str) -> AuditContext:
         "html_report": str(html_path)
     }
 
-    print(f"  ✓ Audit complete!")
+    print(f"  [OK] Audit complete!")
     print(f"    Score: {context.overall_score}")
     print(f"    Risk: {context.geo_risk_level}")
     print(f"    JSON: {audit_json_path}")

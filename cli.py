@@ -93,12 +93,12 @@ async def main():
 
         try:
             context = await run_audit(url, config, args.output_dir)
-            print(f"  ✓ Complete - Score: {context.overall_score}, Risk: {context.geo_risk_level}")
+            print(f"  [OK] Complete - Score: {context.overall_score}, Risk: {context.geo_risk_level}")
         except Exception as e:
-            print(f"  ✗ Failed: {e}")
+            print(f"  [FAIL] Failed: {e}")
             continue
 
-    print(f"\n✓ Processed {len(urls)} URLs")
+    print(f"\n[OK] Processed {len(urls)} URLs")
     print(f"  Output: {args.output_dir}")
 
     return 0
