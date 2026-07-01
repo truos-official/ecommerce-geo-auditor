@@ -4,7 +4,7 @@ Python CLI tool for auditing eCommerce product pages for Generative Engine Optim
 
 ## Overview
 
-Tests whether AI agents (ChatGPT, Claude, Gemini, Perplexity, Bing Copilot) cite your product pages vs answering generically vs citing competitors. Identifies traffic-driving vs traffic-diverting content.
+Tests whether AI agents (ChatGPT, Anthropic, Gemini, Perplexity, Bing Copilot) cite product pages vs answering generically vs citing competitors. Identifies traffic-driving vs traffic-diverting content.
 
 ## Features
 
@@ -15,7 +15,7 @@ Tests whether AI agents (ChatGPT, Claude, Gemini, Perplexity, Bing Copilot) cite
 - **Content value ranking**: Score content blocks by extraction/usage/citation correlation
 - **Traffic impact analysis**: Citation format, click likelihood, business impact
 - **Cross-agent retrieval matrix**: Diagnose Google Search visibility issues
-- **Comprehensive reports**: HTML + PDF with remediation priorities
+- **Comprehensive reports**: HTML with remediation priorities
 
 ## Installation
 
